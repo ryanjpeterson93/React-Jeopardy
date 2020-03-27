@@ -15,9 +15,3 @@ const App = () => (
 );
 
 export default App;
-
-
-componentDidMount(id) =>
-
-"string"
-`string`
