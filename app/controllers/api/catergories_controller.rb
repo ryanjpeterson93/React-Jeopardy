@@ -24,6 +24,3 @@ class Api::CatergoriesController < ApplicationController
   end
 
 end
-
-
-
