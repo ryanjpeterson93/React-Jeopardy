@@ -28,16 +28,16 @@ Card.create(name: 'How can you pass data to a parent function with props?', poin
 Card.create(name: 'How can we use props for styling?', points: 400, flipped: false, catergory_id: 2, answer: 'Pass some style props.')
 Card.create(name: 'How can you pass prop data through nested components and back up?', points: 500, flipped: false, catergory_id: 2, answer: 'Props>this.props>this.props')
 
-Card.create(name: 'What are React Hooks?', points: 100, flipped: false, catergory_id: 2, answer: 'Functions that have special abilities to give our functional components more horsepower.')
-Card.create(name: 'What does the useContext hook do?', points: 200, flipped: false, catergory_id: 2, answer: 'Allows us to easily access state living within a provider')
-Card.create(name: 'How can we use state in a functional component?', points: 300, flipped: false, catergory_id: 2, answer:'useState()' )
-Card.create(name: 'How can we do something like a componentDidMount with Hooks?', points: 400, flipped: false, catergory_id: 2, answer: 'useEffect()')
-Card.create(name: 'What can we NOT use hooks on?', points: 500, flipped: false, catergory_id: 2, answer: 'Class Components')
+Card.create(name: 'What are React Hooks?', points: 100, flipped: false, catergory_id: 3, answer: 'Functions that have special abilities to give our functional components more horsepower.')
+Card.create(name: 'What does the useContext hook do?', points: 200, flipped: false, catergory_id: 3, answer: 'Allows us to easily access state living within a provider')
+Card.create(name: 'How can we use state in a functional component?', points: 300, flipped: false, catergory_id: 3, answer:'useState()' )
+Card.create(name: 'How can we do something like a componentDidMount with Hooks?', points: 400, flipped: false, catergory_id: 3, answer: 'useEffect()')
+Card.create(name: 'What can we NOT use hooks on?', points: 500, flipped: false, catergory_id: 3, answer: 'Class Components')
 
-Card.create(name: 'What is React Context?', points: 100, flipped: false, catergory_id: 2, answer: 'A system to directly pass props to nested components easily.')
-Card.create(name: 'When should we use Context?', points: 200, flipped: false, catergory_id: 2, answer: 'When we want to share data that is considered "Gloabal" in applcation scope.')
-Card.create(name: 'What is one difficuly of using Context?', points: 300, flipped: false, catergory_id: 2, answer:'It makes reuse of components more difficult.' )
-Card.create(name: 'How do we use a context provider with a class component?', points: 400, flipped: false, catergory_id: 2, answer: 'Wrap the JSX component with provider, then pass data as props.')
-Card.create(name: 'What are the steps to making a provider?', points: 500, flipped: false, catergory_id: 2, answer: 'Create context variable via React.createContext()-- Create context provider and export -- Create context consumer to call in component. ')
+Card.create(name: 'What is React Context?', points: 100, flipped: false, catergory_id: 4, answer: 'A system to directly pass props to nested components easily.')
+Card.create(name: 'When should we use Context?', points: 200, flipped: false, catergory_id: 4, answer: 'When we want to share data that is considered "Gloabal" in applcation scope.')
+Card.create(name: 'What is one difficuly of using Context?', points: 300, flipped: false, catergory_id: 4, answer:'It makes reuse of components more difficult.' )
+Card.create(name: 'How do we use a context provider with a class component?', points: 400, flipped: false, catergory_id: 4, answer: 'Wrap the JSX component with provider, then pass data as props.')
+Card.create(name: 'What are the steps to making a provider?', points: 500, flipped: false, catergory_id: 4, answer: 'Create context variable via React.createContext()-- Create context provider and export -- Create context consumer to call in component. ')
 
 puts "Data Seeded."
