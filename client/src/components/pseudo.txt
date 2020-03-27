@@ -1,0 +1,40 @@
+
+Basic Objectives
+
+Create a Rails backend React frontend
+Two Rails models:
+Category (name)
+Card (question, answer, points)
+multiple choice questions
+4 columns on a card (answer1, answer2, answer3, answer4, correct_answer)
+Question model that belongs to Card model
+serialize and array of answers column
+Fill in the blank
+text field that compare to actual answer
+CRUD actions for categories and cards
+Use Context to get the categories or cards or both
+Keep track of one player's points locally
+Style it and make it look nice
+Push to Heroku
+ 
+
+Bonus Objectives
+
+Add a second player and keep track of their points locally
+Push up some other apps to Netlify or Heroku
+
+______________________________________________________________________
+
+-Make a form for new card and new catergory - link to CRUD actions / controller
+
+-Create provider for card data / convert components to be able to use.
+
+-Create styling for card show on Home - cards need to display point, onclick for user selected answer
+-onClick function compares user answer and correct answer, spits out something based on result
+
+-Create function to compare user selected answer 
+
+-Sort cards by catergory, write JSX such that it can take this and disply correctly in above ^
+
+- Add answer columns 1-4 to cards table in DB, and correct_answer column.
+
