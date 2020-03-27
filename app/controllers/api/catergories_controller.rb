@@ -1,20 +1,26 @@
 class Api::CatergoriesController < ApplicationController
   def index
-    render json: Catergorie.all
+    render json: Catergory.all
   end
 
   def create
-    cat = Catergorie.create(name: params[:name])
+    cat = Catergory.create(cat_params)
     render json: cat
   end
 
   def update
-    cat = Catergorie.find(params[:id])
+    cat = Catergory.find(params[:id])
     render json: cat
   end
 
   def destroy
-    Catergorie.find(params[:id]).destroy
+    Catergory.find(params[:id]).destroy
+  end
+ 
+  private
+
+  def cat_params
+    params.require(:catergories).permit(:name)
   end
 
 end
