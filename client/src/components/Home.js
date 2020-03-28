@@ -1,22 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { PageHeader } from 'antd';
 import QuestionCard from './QuestionCard';
-import menu from './Dropdown'
-import { Dropdown } from 'antd';
+import { Dropdown, Menu } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { CardContext } from '../providers/CardProvider';
 
 const  Home = () => {
-  
+  const [showCardForm, setCardForm] = useState(false)
+  const [showCatergoryForm, setCatergoryForm] = useState(false)
+  const [score, setScore] = useState(0)
   const { cards } = useContext(CardContext)
-  // state = {
-  //   score: [],
-  //   cards: [],
-  //   catForm: false,
-  //   cardForm: false
-  // }
 
- 
 
   const toggleCatForm = () => {
     console.log('toggle Cat hit')
@@ -33,8 +27,6 @@ const  Home = () => {
     //Function that pushes score to state array
   }
 
-
-
   return(
     <>
     <div style={{display: 'flex', justifyContent: 'space-between', backgroundColor: '#AEC6DD'}}> 
@@ -45,7 +37,15 @@ const  Home = () => {
         subTitle="This is a subtitle"
       />
       <div style={{margin: '25px'}}>
-        <Dropdown overlay={menu} newCard={toggleCardForm} newCat={toggleCatForm} >
+        <Dropdown overlay={ <Menu>
+                              <Menu.Item onClick={toggleCatForm}>
+                                New Catergory
+                              </Menu.Item>
+                              <Menu.Item onClick={toggleCardForm}>
+                                New Card
+                              </Menu.Item>
+                            </Menu>
+                          }>
           <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
             New Item<DownOutlined />
           </a>
