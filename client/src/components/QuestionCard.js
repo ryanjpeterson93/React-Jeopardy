@@ -1,6 +1,5 @@
 import React from 'react'
 import { Card } from 'antd';
-import Axios from 'axios'
 
 
 class QuestionCard extends React.Component {
