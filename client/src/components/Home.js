@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { PageHeader } from 'antd';
 import QuestionCard from './QuestionCard';
-import { Dropdown, Menu } from 'antd';
+import { Dropdown, Menu, Col, Row } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { CardContext } from '../providers/CardProvider';
 import CatergoryForm from './CatergoryForm';
@@ -11,6 +11,8 @@ const  Home = () => {
   const [showCatergoryForm, setCatergoryForm] = useState(false)
   const [score, setScore] = useState(0)
   const { cards } = useContext(CardContext)
+  const { catergories } = useContext(CardContext)
+
 
 
   const toggleCatForm = () => {

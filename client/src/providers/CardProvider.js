@@ -12,6 +12,7 @@ export const CardConsumer = CardContext.Consumer;
 class CardProvider extends React.Component {
   state = {
     cards: [],
+    catergories: []
   };
 
   componentDidMount() {
@@ -22,6 +23,16 @@ class CardProvider extends React.Component {
         cards: res.data
       });
       // console.log(this.state.cards)
+    }).catch(err => {
+      // console.log(err)
+    })
+    Axios.get(`/api/catergories`)
+    .then(res => {
+      // console.log(res.data)
+      this.setState({
+        catergories: res.data
+      });
+      // console.log(this.state.catergories)
     }).catch(err => {
       // console.log(err)
     })
