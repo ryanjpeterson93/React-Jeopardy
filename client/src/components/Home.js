@@ -4,6 +4,7 @@ import QuestionCard from './QuestionCard';
 import { Dropdown, Menu } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { CardContext } from '../providers/CardProvider';
+import CatergoryForm from './CatergoryForm';
 
 const  Home = () => {
   const [showCardForm, setCardForm] = useState(false)
@@ -13,7 +14,7 @@ const  Home = () => {
 
 
   const toggleCatForm = () => {
-    console.log('toggle Cat hit')
+    setCatergoryForm(!showCatergoryForm)
   }
   const toggleCardForm = () => {
     console.log('toggle Card hit')
@@ -29,7 +30,7 @@ const  Home = () => {
 
   return(
     <>
-    <div style={{display: 'flex', justifyContent: 'space-between', backgroundColor: '#AEC6DD'}}> 
+    <div style={{display: 'flex', justifyContent: 'space-between', backgroundColor: '#39ADF9'}}> 
     <PageHeader
         className="site-page-header"
         // onBack={() => null}
@@ -46,12 +47,15 @@ const  Home = () => {
                               </Menu.Item>
                             </Menu>
                           }>
-          <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-            New Item<DownOutlined />
+          <a className="ant-dropdown-link" onClick={e => e.preventDefault()} style={{color: 'black'}}>
+            New Item <DownOutlined />
           </a>
         </Dropdown>
       </div>
     </div>
+    {showCatergoryForm ? 
+     <CatergoryForm/>
+    : null}
     
       {cards.map(card => (
         <QuestionCard key={card.id} data={card}/>

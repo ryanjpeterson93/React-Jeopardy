@@ -38,3 +38,4 @@ ______________________________________________________________________
 
 - Add answer columns 1-4 to cards table in DB, and correct_answer column.
 
+- dependent - destory on model
