@@ -70,6 +70,7 @@ class CardForm extends React.Component {
         answer_4: '',
         correct_answer: '',
       });
+      this.props.toggle()
     }).catch(err => {
       console.log(err)
     })

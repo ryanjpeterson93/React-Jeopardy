@@ -15,6 +15,7 @@ class CatergoryForm extends React.Component {
     .then(res => {
       console.log(res)
       this.setState({name: ''});
+      this.props.toggle()
     }).catch(err => {
       console.log(err)
     })

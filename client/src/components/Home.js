@@ -56,10 +56,10 @@ const  Home = () => {
       </div>
     </div>
     {showCatergoryForm ? 
-     <CatergoryForm/>
+     <CatergoryForm toggle={() => toggleCatForm()}/>
     : null}
     {showCardForm ? 
-     <CardForm/>
+     <CardForm toggle={() => toggleCardForm()}/>
     : null}
     
     {/* <List
