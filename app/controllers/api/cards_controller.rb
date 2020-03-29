@@ -3,7 +3,7 @@ class Api::CardsController < ApplicationController
   before_action :set_card, only: [:show, :update, :destroy]
 
   def index
-    render json: Card.all
+    render json: @catergory.cards
   end
 
   def show

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { PageHeader } from 'antd';
 import QuestionCard from './QuestionCard';
 import { Dropdown, Menu, Col, Row, List, Card } from 'antd';
@@ -6,15 +6,28 @@ import { DownOutlined } from '@ant-design/icons';
 import { CardContext } from '../providers/CardProvider';
 import CatergoryForm from './CatergoryForm';
 import CardForm from './CardForm'
+import Catergory from './Catergory'
+import Axios from 'axios'
+
 
 const  Home = () => {
   const [showCardForm, setCardForm] = useState(false)
   const [showCatergoryForm, setCatergoryForm] = useState(false)
   const [score, setScore] = useState(0)
   const { cards } = useContext(CardContext)
-  const { catergories } = useContext(CardContext)
+  const [catergories, setCatergories] = useState([])
 
 
+  useEffect( () => {
+    Axios.get(`/api/catergories`)
+      .then(res => {
+        // console.log(res.data)
+        setCatergories(res.data)
+        // console.log(this.state.catergories)
+      }).catch(err => {
+        // console.log(err)
+      });
+  })
 
   const toggleCatForm = () => {
     setCatergoryForm(!showCatergoryForm)
@@ -62,21 +75,15 @@ const  Home = () => {
      <CardForm toggle={() => toggleCardForm()}/>
     : null}
     
-    {/* <List
-    grid={{
-      gutter: 16,
-    }}
-    dataSource={catergories}
-    renderItem={catergories => (
-      <List.Item>
-        <Card title={catergories.name}></Card>
-      </List.Item>
-    )}
-  /> */}
-
-      {cards.map(card => (
-        <QuestionCard key={card.id} data={card}/>
-      ))}
+    <Row> 
+      {catergories.map(catergory => {
+        return (
+          <Col span={6}> 
+          <Catergory catergory={catergory} key={ catergory.id }/>
+          </Col>
+        )
+      })}
+    </Row>
   </>
   )
 }
