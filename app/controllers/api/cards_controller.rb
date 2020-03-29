@@ -1,6 +1,6 @@
 class Api::CardsController < ApplicationController
   before_action :set_catergory 
-  before_action :set_card, only: [:show, :update, :destory]
+  before_action :set_card, only: [:show, :update, :destroy]
 
   def index
     render json: Card.all
@@ -11,11 +11,11 @@ class Api::CardsController < ApplicationController
   end
 
   def create
-    card = @category.cards.new(card_params)
-    if cards.save
+    card = @catergory.cards.new(card_params)
+    if card.save
       render json: card
     else
-      render json: {message: 'things and stuff'}
+      render json: {message: 'catastrophic failure'}
     end
   end
 
@@ -34,7 +34,7 @@ class Api::CardsController < ApplicationController
 private
 
   def card_params
-    params.require(:cards).permit(:name, :points, :flipped)
+    params.require(:card).permit(:name, :points, :flipped, :answer_1, :answer_2, :answer_3, :answer_4, :correct_answer)
   end
 
   def set_catergory
