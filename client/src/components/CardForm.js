@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Input, Button, Select } from 'antd';
+import { UpSquareOutlined } from '@ant-design/icons'
 import { CardConsumer } from '../providers/CardProvider'
 import Axios from 'axios';
 
@@ -125,6 +126,9 @@ class CardForm extends React.Component {
           </Button>
         </Form.Item>
       </Form>
+      <div style={{display: 'flex', justifyContent: 'flex-end', marginRight: '30px'}}>
+        <UpSquareOutlined style={{fontSize: '24px'}} onClick={() => this.props.toggle()}/>
+      </div>
       <hr/>
       </div>
     );
