@@ -8,7 +8,6 @@ class Catergory extends React.Component {
   };
 
   componentDidMount() {
-    console.log(this.props)
     Axios.get(`/api/catergories/${this.props.catergory.id}/cards`)
     .then(res => {
       // console.log(res)

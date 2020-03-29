@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from 'antd';
+import { Card, Button, Input } from 'antd';
 
 
 class QuestionCard extends React.Component {
@@ -27,6 +27,10 @@ cardFlip = () => {
   });
 }
 
+handleSubmit = (e) => {
+
+}
+
 render() {
   const { name, answer_1, answer_2, answer_3, answer_4, points, flipped } = this.state
   return(
@@ -39,6 +43,8 @@ render() {
     <p>{answer_3}</p>
     <p>{answer_4}</p>
     <p>Worth:{points}</p>
+    <Input placeholder="Select A, B, C, or D"/>
+    <Button onSubmit={this.handleSubmit}>Submit</Button>
     </>
     : null}
   </Card>

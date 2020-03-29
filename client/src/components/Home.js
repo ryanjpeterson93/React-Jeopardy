@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { PageHeader } from 'antd';
 import QuestionCard from './QuestionCard';
-import { Dropdown, Menu, Col, Row, List, Card } from 'antd';
+import { Dropdown, Menu, Col, Row,} from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { CardContext } from '../providers/CardProvider';
 import CatergoryForm from './CatergoryForm';
