@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { PageHeader } from 'antd';
 import QuestionCard from './QuestionCard';
-import { Dropdown, Menu, Col, Row } from 'antd';
+import { Dropdown, Menu, Col, Row, List, Card } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { CardContext } from '../providers/CardProvider';
 import CatergoryForm from './CatergoryForm';
@@ -59,6 +59,18 @@ const  Home = () => {
      <CatergoryForm/>
     : null}
     
+    {/* <List
+    grid={{
+      gutter: 16,
+    }}
+    dataSource={catergories}
+    renderItem={catergories => (
+      <List.Item>
+        <Card title={catergories.name}></Card>
+      </List.Item>
+    )}
+  /> */}
+
       {cards.map(card => (
         <QuestionCard key={card.id} data={card}/>
       ))}
