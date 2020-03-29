@@ -9,11 +9,12 @@ class CatergoryForm extends React.Component {
   }
 
   onFinish = () => {
-    const newCatergory = {name: this.state.name}
+    const newCatergory = {...this.state}
     // console.log(newCatergory)
     Axios.post('/api/catergories', newCatergory)
     .then(res => {
       console.log(res)
+      this.setState({name: ''});
     }).catch(err => {
       console.log(err)
     })
@@ -31,14 +32,14 @@ class CatergoryForm extends React.Component {
     return (
       <>
       <div style={{marginTop: '20px', display: 'flex', justifyContent: 'center'}}>
-      <Form name="control-ref" onFinish={this.onFinish}>
-        <Form.Item  label="New Catergory">
-          <Input name='catergory' value={name} onChange={this.onFill} />
-          <Button type="primary" htmlType="submit" style={{marginTop: '12px'}}>
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
+        <Form name="control-ref" onFinish={this.onFinish}>
+          <Form.Item  label="New Catergory">
+            <Input name='catergory' value={name} onChange={this.onFill} />
+            <Button type="primary" htmlType="submit" style={{marginTop: '12px'}}>
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
       </div>
       <hr/>
       </>

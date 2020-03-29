@@ -4,13 +4,13 @@ class Api::CatergoriesController < ApplicationController
   end
 
   def create
-    cat = Catergory.create(cat_params)
-    render json: cat
+    catergory = Catergory.create(cat_params)
+    render json: catergory
   end
 
   def update
-    cat = Catergory.find(params[:id])
-    render json: cat
+    catergory = Catergory.find(params[:id])
+    render json: catergory
   end
 
   def destroy
@@ -20,7 +20,7 @@ class Api::CatergoriesController < ApplicationController
   private
 
   def cat_params
-    params.require(:catergories).permit(:name)
+    params.require(:catergory).permit(:name)
   end
 
 end
