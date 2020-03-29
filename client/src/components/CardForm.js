@@ -7,7 +7,7 @@ const layout = {
     span: 8,
   },
   wrapperCol: {
-    span: 16,
+    span: 8,
   },
 };
 const tailLayout = {
@@ -17,56 +17,41 @@ const tailLayout = {
   },
 };
 
-class Demo extends React.Component {
-  formRef = React.createRef();
+class CardForm extends React.Component {
+  state= {
+    name: '',
+    catergory_id: 0,
+    flipped: false,
+    points: 0,
+    answer_1: '',
+    answer_2: '',
+    answer_3: '',
+    answer_4: '',
+    correct_answer: ''
+  }
 
-  onGenderChange = value => {
-    this.formRef.current.setFieldsValue({
-      note: `Hi, ${value === 'male' ? 'man' : 'lady'}!`,
-    });
+  onChange = e => {
+    console.log(e.target.name)
+    console.log(e.target.value)
   };
 
   onFinish = values => {
-    console.log(values);
+    console.log(this.state);
   };
 
-  onReset = () => {
-    this.formRef.current.resetFields();
-  };
-
-  onFill = () => {
-    this.formRef.current.setFieldsValue({
-      note: 'Hello world!',
-      gender: 'male',
-    });
-  };
 
   render() {
     return (
-      <Form {...layout} ref={this.formRef} name="control-ref" onFinish={this.onFinish}>
+      <div style={{marginTop: '20px'}}>
+      <Form {...layout} name="control-ref" onFinish={this.onFinish}>
         <Form.Item
-          name="note"
-          label="Note"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="gender"
-          label="Gender"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
+          name="catergory_id"
+          label="Catergory"
         >
           <Select
-            placeholder="Select a option and change input text above"
-            onChange={this.onGenderChange}
+            name="catergory_id"
+            placeholder="Select Catergory"
+            // onChange={this.onChange}
             allowClear
           >
             <Option value="male">male</Option>
@@ -74,38 +59,37 @@ class Demo extends React.Component {
             <Option value="other">other</Option>
           </Select>
         </Form.Item>
-        <Form.Item
-          noStyle
-          shouldUpdate={(prevValues, currentValues) => prevValues.gender !== currentValues.gender}
-        >
-          {({ getFieldValue }) =>
-            getFieldValue('gender') === 'other' ? (
-              <Form.Item
-                name="customizeGender"
-                label="Customize Gender"
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            ) : null
-          }
+        <Form.Item label="Question:">
+          <Input name="name" onChange={this.onChange} allowClear/>
         </Form.Item>
+        <Form.Item label="Point Value">
+          <Input name="points" onChange={this.onChange} allowClear/>
+        </Form.Item>
+        <Form.Item label="Answer A:">
+          <Input name="answer_1" onChange={this.onChange} allowClear/>
+        </Form.Item>
+        <Form.Item label="Answer B:">
+          <Input name="answer_2" onChange={this.onChange} allowClear/>
+        </Form.Item>
+        <Form.Item label="Answer C:">
+          <Input name="answer_3" onChange={this.onChange} allowClear/>
+        </Form.Item>
+        <Form.Item label="Answer D:">
+          <Input name="answer_4"/>
+        </Form.Item>
+        <Form.Item label="Correct Answer (A, B, C, or D):">
+          <Input name="correct_answer" onChange={this.onChange} allowClear/>
+        </Form.Item>
+
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
-          <Button htmlType="button" onClick={this.onReset}>
-            Reset
-          </Button>
-          <Button type="link" htmlType="button" onClick={this.onFill}>
-            Fill form
-          </Button>
         </Form.Item>
       </Form>
+      <hr/>
+      </div>
     );
   }
 }
+export default CardForm

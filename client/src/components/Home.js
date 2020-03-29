@@ -5,6 +5,7 @@ import { Dropdown, Menu } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { CardContext } from '../providers/CardProvider';
 import CatergoryForm from './CatergoryForm';
+import CardForm from './CardForm'
 
 const  Home = () => {
   const [showCardForm, setCardForm] = useState(false)
@@ -17,16 +18,16 @@ const  Home = () => {
     setCatergoryForm(!showCatergoryForm)
   }
   const toggleCardForm = () => {
-    console.log('toggle Card hit')
+    setCardForm(!showCardForm)
   }
 
-  const addArray = () => {
-    // function that adds array from state.
-  }
+  // const addArray = () => {
+  //   // function that adds array from state.
+  // }
 
-  const addScore = () => {
-    //Function that pushes score to state array
-  }
+  // const addScore = () => {
+  //   //Function that pushes score to state array
+  // }
 
   return(
     <>
@@ -34,10 +35,9 @@ const  Home = () => {
     <PageHeader
         className="site-page-header"
         // onBack={() => null}
-        title="Home"
-        subTitle="This is a subtitle"
+        title="REACT JEOPARDY"
       />
-      <div style={{margin: '25px'}}>
+      <div style={{marginTop: '20px', marginRight: '50px'}}>
         <Dropdown overlay={ <Menu>
                               <Menu.Item onClick={toggleCatForm}>
                                 New Catergory
@@ -55,6 +55,9 @@ const  Home = () => {
     </div>
     {showCatergoryForm ? 
      <CatergoryForm/>
+    : null}
+    {showCardForm ? 
+     <CardForm/>
     : null}
     
       {cards.map(card => (
