@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, Button, Input, Form } from 'antd';
 import { EditOutlined, DeleteOutlined, DownOutlined, UpOutlined } from '@ant-design/icons';
+import Axios from 'axios';
 
 
 class QuestionCard extends React.Component {
@@ -33,6 +34,13 @@ showButtons = () => {
   this.setState({
     buttons: !this.state.buttons
   });
+}
+
+deleteCard = () => {
+  const catId = this.props.data.catergory_id
+  const id = this.props.data.id
+  Axios.delete(`/api/catergories/${catId}/cards/${id}`).then(res => {console.log(res)})
+
 }
 
 handleSubmit = () => {
@@ -81,7 +89,7 @@ render() {
     <>
     <div style={divStyle}>
     <EditOutlined style={buttonStyle}/>
-    <DeleteOutlined style={buttonStyle}/>
+    <DeleteOutlined style={buttonStyle} onClick={this.deleteCard}/>
     </div>
     <div style={{display: 'flex', justifyContent: 'flex-end'}}>
     <UpOutlined onClick={this.showButtons}/>

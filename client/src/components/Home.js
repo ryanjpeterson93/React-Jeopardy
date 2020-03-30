@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { PageHeader } from 'antd';
 import { Dropdown, Menu, Col, Row,} from 'antd';
 import { DownOutlined } from '@ant-design/icons';
@@ -6,25 +6,17 @@ import CatergoryForm from './CatergoryForm';
 import CardForm from './CardForm'
 import Catergory from './Catergory'
 import Axios from 'axios'
+import { CardContext } from '../providers/CardProvider';
 
 
 const  Home = () => {
   const [showCardForm, setCardForm] = useState(false)
   const [showCatergoryForm, setCatergoryForm] = useState(false)
   const [score, setScore] = useState(0)
-  const [catergories, setCatergories] = useState([])
+  const data = useContext(CardContext)
+  const catergories = data.catergories
 
-
-  useEffect( () => {
-    Axios.get(`/api/catergories`)
-      .then(res => {
-        // console.log(res.data)
-        setCatergories(res.data)
-        // console.log(this.state.catergories)
-      }).catch(err => {
-        // console.log(err)
-      });
-  })
+  
 
   const toggleCatForm = () => {
     setCatergoryForm(!showCatergoryForm)
