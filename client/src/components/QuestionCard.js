@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button, Input } from 'antd';
+import { Card, Button, Input, Form } from 'antd';
 
 
 class QuestionCard extends React.Component {
@@ -12,12 +12,14 @@ class QuestionCard extends React.Component {
     answer_2: '',
     answer_3: '',
     answer_4: '',
+    answer: ''
   }
 
 componentDidMount() {
   this.setState({
     ...this.props.data
   });
+  this.props.changeScore()
   // console.log(this.state)
 }
 
@@ -27,9 +29,23 @@ cardFlip = () => {
   });
 }
 
-handleSubmit = (e) => {
-
+handleSubmit = () => {
+  const userInput = this.state.answer
+  const correctAnswer = this.props.data.correct_answer
+  if (userInput === correctAnswer){
+    alert('Winner winner, chicken dinner!')
+   // modify score
+   return this.props.changeScore(200)
+  }
+  return alert('You Fail.')
 }
+handleChange = (e) => {
+  // console.log(e.target.value)
+  this.setState({
+    answer: e.target.value
+  });
+}
+
 
 render() {
   const { name, answer_1, answer_2, answer_3, answer_4, points, flipped } = this.state
@@ -43,8 +59,10 @@ render() {
     <p>{answer_3}</p>
     <p>{answer_4}</p>
     <p>Worth:{points}</p>
-    <Input placeholder="Select A, B, C, or D"/>
-    <Button onSubmit={this.handleSubmit}>Submit</Button>
+    <Form >
+      <Input onChange={this.handleChange} name='answer' value={this.state.answer} placeholder="Select A, B, C, or D"/>
+      <Button type='submit' onClick={() => this.handleSubmit()}>Submit</Button>
+    </Form>
     </>
     : null}
   </Card>

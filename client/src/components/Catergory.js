@@ -26,7 +26,7 @@ class Catergory extends React.Component {
       <div>
         <h2>{this.props.catergory.name}</h2>
         {this.state.cards.map(card => (
-        <QuestionCard key={card.id} data={card}/>
+        <QuestionCard key={card.id} data={card} />
       ))}
       </div>
       </>

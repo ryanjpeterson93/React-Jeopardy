@@ -44,6 +44,12 @@ const  Home = () => {
   //   //Function that pushes score to state array
   // }
 
+  const changeScore = (points) => {
+    console.log('change hit')
+    console.log(points)
+    // setScore(score + points)
+  }
+
   return(
     <>
     <div style={{display: 'flex', justifyContent: 'space-between', backgroundColor: '#39ADF9'}}> 
@@ -78,8 +84,8 @@ const  Home = () => {
     <Row> 
       {catergories.map(catergory => {
         return (
-          <Col span={6}> 
-          <Catergory catergory={catergory} key={ catergory.id }/>
+          <Col span={6} key={ catergory.id }> 
+          <Catergory catergory={catergory} changeScore={() => changeScore()} />
           </Col>
         )
       })}
