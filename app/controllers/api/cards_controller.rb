@@ -27,8 +27,8 @@ class Api::CardsController < ApplicationController
     end
   end
 
-  def destory
-    @card.destory 
+  def destroy
+    @card.destroy 
   end
   
 private
@@ -42,7 +42,7 @@ private
   end
 
   def set_card
-    @card = @category.cards.find(params[:id])
+    @card = @catergory.cards.find(params[:id])
   end
 
 end
