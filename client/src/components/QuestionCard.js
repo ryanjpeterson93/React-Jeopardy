@@ -72,7 +72,11 @@ render() {
   const { name, answer_1, answer_2, answer_3, answer_4, points, flipped, buttons } = this.state
   return(
 
-  <Card title={name} extra={<a onClick={() => this.cardFlip()}>{flipped ? 'Hide' : 'Show'}</a>} style={{ width: 300 }}>
+  <Card 
+  title={<span style={{whiteSpace: 'initial'}}>{name}</span>}
+  extra={<a onClick={() => this.cardFlip()}>{flipped ? 'Hide' : 'Show'}</a>} 
+  style={{ width: 300, marginTop: '16px' }}
+  >
     {flipped ?  
     <>
     <p>{answer_1}</p>
