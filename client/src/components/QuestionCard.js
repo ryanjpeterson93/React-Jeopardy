@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Button, Input, Form } from 'antd';
+import { EditOutlined, DeleteOutlined, DownOutlined, UpOutlined } from '@ant-design/icons';
 
 
 class QuestionCard extends React.Component {
@@ -12,7 +13,8 @@ class QuestionCard extends React.Component {
     answer_2: '',
     answer_3: '',
     answer_4: '',
-    answer: ''
+    answer: '',
+    buttons: false
   }
 
 componentDidMount() {
@@ -27,17 +29,28 @@ cardFlip = () => {
     flipped: !this.state.flipped
   });
 }
+showButtons = () => {
+  this.setState({
+    buttons: !this.state.buttons
+  });
+}
 
 handleSubmit = () => {
   const { points } = this.state
   const userInput = this.state.answer
   const correctAnswer = this.props.data.correct_answer
   if (userInput === correctAnswer){
-    alert(`Correct, for ${this.state.points} points!`)
-   // modify score
-   return this.props.changeScore(this.state.points)
+    //clear form
+    this.setState({answer: ''});
+    // modify score
+    this.props.changeScore(points)
+    //collapse card
+    this.cardFlip()
+    return alert(`Correct, for ${points} points!`)
   }
-  return alert('Swing and a miss.')
+    this.setState({answer: ''});
+    this.cardFlip()
+    return alert('Swing and a miss.')
 }
 handleChange = (e) => {
   // console.log(e.target.value)
@@ -48,7 +61,7 @@ handleChange = (e) => {
 
 
 render() {
-  const { name, answer_1, answer_2, answer_3, answer_4, points, flipped } = this.state
+  const { name, answer_1, answer_2, answer_3, answer_4, points, flipped, buttons } = this.state
   return(
 
   <Card title={name} extra={<a onClick={() => this.cardFlip()}>{flipped ? 'Hide' : 'Show'}</a>} style={{ width: 300 }}>
@@ -63,6 +76,22 @@ render() {
       <Input onChange={this.handleChange} name='answer' value={this.state.answer} placeholder="Select A, B, C, or D"/>
       <Button type='submit' onClick={() => this.handleSubmit()}>Submit</Button>
     </Form>
+    
+    {buttons ? 
+    <>
+    <div style={divStyle}>
+    <EditOutlined style={buttonStyle}/>
+    <DeleteOutlined style={buttonStyle}/>
+    </div>
+    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+    <UpOutlined onClick={this.showButtons}/>
+    </div>
+    </>
+    :
+    <div style={divStyle}>
+    <DownOutlined onClick={this.showButtons}/>
+    </div>
+    }
     </>
     : null}
   </Card>
@@ -74,3 +103,14 @@ render() {
 
 }
 export default QuestionCard
+
+const divStyle = {
+  display: 'flex', 
+  justifyContent: 'flex-end', 
+  marginTop: '24px'
+}
+
+const buttonStyle = {
+  fontSize: '24px',
+  margin: '16px'
+}
