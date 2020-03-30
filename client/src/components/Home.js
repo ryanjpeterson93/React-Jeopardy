@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { PageHeader } from 'antd';
-import QuestionCard from './QuestionCard';
 import { Dropdown, Menu, Col, Row,} from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { CardContext } from '../providers/CardProvider';
@@ -14,7 +13,6 @@ const  Home = () => {
   const [showCardForm, setCardForm] = useState(false)
   const [showCatergoryForm, setCatergoryForm] = useState(false)
   const [score, setScore] = useState(0)
-  const { cards } = useContext(CardContext)
   const [catergories, setCatergories] = useState([])
 
 
@@ -36,18 +34,10 @@ const  Home = () => {
     setCardForm(!showCardForm)
   }
 
-  // const addArray = () => {
-  //   // function that adds array from state.
-  // }
-
-  // const addScore = () => {
-  //   //Function that pushes score to state array
-  // }
 
   const changeScore = (points) => {
-    console.log('change hit')
-    console.log(points)
-    // setScore(score + points)
+    //Add score to user from if statement in handleSubmit - QuestionCard.js
+    setScore(score + points)
   }
 
   return(
@@ -57,6 +47,7 @@ const  Home = () => {
         className="site-page-header"
         // onBack={() => null}
         title="REACT JEOPARDY"
+        subTitle={`User Points: ${score}`}
       />
       <div style={{marginTop: '20px', marginRight: '50px'}}>
         <Dropdown overlay={ <Menu>

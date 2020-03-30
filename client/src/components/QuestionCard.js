@@ -29,14 +29,15 @@ cardFlip = () => {
 }
 
 handleSubmit = () => {
+  const { points } = this.state
   const userInput = this.state.answer
   const correctAnswer = this.props.data.correct_answer
   if (userInput === correctAnswer){
-    alert('Winner winner, chicken dinner!')
+    alert(`Correct, for ${this.state.points} points!`)
    // modify score
    return this.props.changeScore(this.state.points)
   }
-  return alert('You Fail.')
+  return alert('Swing and a miss.')
 }
 handleChange = (e) => {
   // console.log(e.target.value)
@@ -50,7 +51,7 @@ render() {
   const { name, answer_1, answer_2, answer_3, answer_4, points, flipped } = this.state
   return(
 
-  <Card title={name} extra={<a onClick={() => this.cardFlip()}>Show</a>} style={{ width: 300 }}>
+  <Card title={name} extra={<a onClick={() => this.cardFlip()}>{flipped ? 'Hide' : 'Show'}</a>} style={{ width: 300 }}>
     {flipped ?  
     <>
     <p>{answer_1}</p>
