@@ -19,7 +19,6 @@ componentDidMount() {
   this.setState({
     ...this.props.data
   });
-  this.props.changeScore()
   // console.log(this.state)
 }
 
@@ -35,7 +34,7 @@ handleSubmit = () => {
   if (userInput === correctAnswer){
     alert('Winner winner, chicken dinner!')
    // modify score
-   return this.props.changeScore(200)
+   return this.props.changeScore(this.state.points)
   }
   return alert('You Fail.')
 }
@@ -58,7 +57,7 @@ render() {
     <p>{answer_2}</p>
     <p>{answer_3}</p>
     <p>{answer_4}</p>
-    <p>Worth:{points}</p>
+    <p>Worth: {points}</p>
     <Form >
       <Input onChange={this.handleChange} name='answer' value={this.state.answer} placeholder="Select A, B, C, or D"/>
       <Button type='submit' onClick={() => this.handleSubmit()}>Submit</Button>

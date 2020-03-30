@@ -85,7 +85,7 @@ const  Home = () => {
       {catergories.map(catergory => {
         return (
           <Col span={6} key={ catergory.id }> 
-          <Catergory catergory={catergory} changeScore={() => changeScore()} />
+          <Catergory catergory={catergory} changeScore={changeScore} />
           </Col>
         )
       })}

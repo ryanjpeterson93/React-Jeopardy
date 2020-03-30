@@ -25,7 +25,7 @@ class CardForm extends React.Component {
     name: '',
     catergory_id: 0,
     flipped: false,
-    points: 0,
+    points: null,
     answer_1: '',
     answer_2: '',
     answer_3: '',
